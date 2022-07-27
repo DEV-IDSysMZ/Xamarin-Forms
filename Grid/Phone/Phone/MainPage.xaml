@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 x:Class="Phone.MainPage">
+			 x:Class="Phone.MainPage" Background="#354242">
 
-	<Grid Background="#354242" Padding="40" RowSpacing="10" ColumnSpacing="10">
+	<Grid Padding="40" RowSpacing="10" ColumnSpacing="10">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="*"/>
