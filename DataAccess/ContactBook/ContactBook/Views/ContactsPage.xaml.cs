@@ -45,6 +45,7 @@ namespace ContactBook
 			page.ContactAdded += async (source, contact) =>
 			{
 				_contacts.Add(contact);
+				await _connection.InsertAsync(contact);
 			};
 
 			await Navigation.PushAsync(page);
