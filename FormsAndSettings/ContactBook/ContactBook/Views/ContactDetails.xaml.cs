@@ -11,14 +11,9 @@ namespace ContactBook.Views
 	{
 		public ContactDetails(Contact contact)
 		{
-			if (contact == null)
-			{
-				throw new ArgumentNullException(nameof(contact));
-			}
-
 			InitializeComponent();
 
-			BindingContext = contact;
+			BindingContext = contact ?? throw new ArgumentNullException(nameof(contact));
 
 			//BindingContext = new Contact()
 			//{

@@ -9,8 +9,8 @@
 				<EntryCell Label="Last name" Text="{Binding LastName}" />
 			</TableSection>
 			<TableSection Title="Contact">
-				<EntryCell Label="Phone" Text="{Binding Phone}"/>
-				<EntryCell Label="Email" Text="{Binding Email}" />
+				<EntryCell Label="Phone" Text="{Binding Phone}" Keyboard="Telephone"/>
+				<EntryCell Label="Email" Text="{Binding Email}" Keyboard="Email"/>
 			</TableSection>
 			<TableSection Title="Other">
 				<SwitchCell Text="Blocked" On="{Binding IsBlocked}"/>

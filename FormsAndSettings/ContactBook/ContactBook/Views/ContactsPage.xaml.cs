@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace ContactBook
 {
-	public partial class MainPage : ContentPage
+	public partial class ContactsPage : ContentPage
 	{
 		private ObservableCollection<Contact> _contacts;
 
-		public MainPage()
+		public ContactsPage()
 		{
 			InitializeComponent();
 
