@@ -8,7 +8,7 @@ namespace ContactBook
 {
 	public partial class ContactsPage : ContentPage
 	{
-		private ObservableCollection<Contact> _contacts;
+		private readonly ObservableCollection<Contact> _contacts;
 
 		public ContactsPage()
 		{
@@ -25,14 +25,39 @@ namespace ContactBook
 
 		private async void OnAddContact(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new ContactDetails(new Contact()));
+			var page = new ContactDetailPage(new Contact());
+
+			page.ContactAdded += (source, contact) =>
+			{
+				_contacts.Add(contact);
+			};
+
+			await Navigation.PushAsync(page);
 		}
 
 		private async void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
 		{
-			var contact = e.SelectedItem as Contact;
+			if (contacts.SelectedItem == null)
+			{
+				return;
+			}
 
-			await Navigation.PushAsync(new ContactDetails(contact));
+			var selectedContact = e.SelectedItem as Contact;
+			var page = new ContactDetailPage(selectedContact);
+
+			contacts.SelectedItem = null;
+
+			page.ContactUpdated += (source, contact) =>
+			{
+				selectedContact.Id = contact.Id;
+				selectedContact.FirstName = contact.FirstName;
+				selectedContact.LastName = contact.LastName;
+				selectedContact.Phone = contact.Phone;
+				selectedContact.Email = contact.Email;
+				selectedContact.IsBlocked = contact.IsBlocked;
+			};
+
+			await Navigation.PushAsync(page);
 		}
 
 		private async void DeleteContact(object sender, EventArgs e)
