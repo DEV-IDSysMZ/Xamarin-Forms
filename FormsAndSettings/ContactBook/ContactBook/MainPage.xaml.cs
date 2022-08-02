@@ -23,16 +23,16 @@ namespace ContactBook
 			contacts.ItemsSource = _contacts;
 		}
 
-		private void OnAddContact(object sender, EventArgs e)
+		private async void OnAddContact(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new ContactDetails());
-
-			contacts.SelectedItem = null;
+			await Navigation.PushAsync(new ContactDetails(new Contact()));
 		}
 
-		private void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
+		private async void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
 		{
-			var contact = (ContactDetails)e.SelectedItem;
+			var contact = e.SelectedItem as Contact;
+
+			await Navigation.PushAsync(new ContactDetails(contact));
 		}
 
 		private async void DeleteContact(object sender, EventArgs e)

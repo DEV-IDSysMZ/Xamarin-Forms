@@ -5,15 +5,20 @@
 	<TableView>
 		<TableRoot>
 			<TableSection Title="Name">
-				<EntryCell Label="First name" />
-				<EntryCell Label="Last name" />
+				<EntryCell Label="First name" Text="{Binding FirstName}" />
+				<EntryCell Label="Last name" Text="{Binding LastName}" />
 			</TableSection>
 			<TableSection Title="Contact">
-				<EntryCell Label="Phone" />
-				<EntryCell Label="Email" />
+				<EntryCell Label="Phone" Text="{Binding Phone}"/>
+				<EntryCell Label="Email" Text="{Binding Email}" />
 			</TableSection>
 			<TableSection Title="Other">
-				<SwitchCell Text="Blocked" />
+				<SwitchCell Text="Blocked" On="{Binding IsBlocked}"/>
+			</TableSection>
+			<TableSection>
+				<ViewCell>
+					<Button Text="Save" Clicked="OnSave" />
+				</ViewCell>
 			</TableSection>
 		</TableRoot>
 	</TableView>
