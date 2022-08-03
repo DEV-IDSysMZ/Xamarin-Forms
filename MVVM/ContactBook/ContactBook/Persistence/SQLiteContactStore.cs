@@ -37,7 +37,7 @@ namespace ContactBook.Persistence
 
 		public async Task DeleteContact(Contact contact)
 		{
-			await _connection.DeleteAsync<Contact>(contact);
+			await _connection.DeleteAsync(contact);
 		}
 	}
 }
